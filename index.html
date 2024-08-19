@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script src="./js/script.js"></script>
+    <title>Bank account</title>
+</head>
+<body>
+    <div class="img">
+        <img src="./img/download.jpg" alt="" class="welcome-image"><h2>Welcome to Moniepoint</h2>
+     </div>
+<div class="body">
+    <div class="form-container">
+        <div class="form-header">
+            <button id="login-btn" class="toggle-btn active">Login</button>
+            <button id="signup-btn" class="toggle-btn">Sign Up</button>
+        </div>
+        <div class="form-body">
+            <form id="login-form" class="form-content active">
+                <div class="input-group">
+                    <label for="login-username">Username</label>
+                    <input type="text" id="login-username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <form id="signup-form" class="form-content">
+                <div class="input-group">
+                    <label for="signup-username">Username</label>
+                    <input type="text" id="signup-username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" name="password" required>
+                </div>
+                <div class="input-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" name="email" required>
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
