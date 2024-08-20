@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Offcanvas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .offcanvas {
+            position: fixed;
+            top: 0;
+            right: -400px; /* Hide offcanvas initially */
+            width: 300px;
+            height: 100%;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            transition: right 0.3s ease; /* Smooth sliding effect */
+            z-index: 1000;
+        }
+
+        .offcanvas.active {
+            right: 0; /* Slide in the offcanvas */
+        }
+
+        .offcanvas-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .offcanvas-title {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .btn-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .offcanvas-body {
+            overflow-y: auto; /* Allow scrolling if content is too long */
+        }
+
+        .offcanvas a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 15px 0;
+            font-size: 18px;
+            transition: color 0.2s ease;
+        }
+
+        .offcanvas a:hover {
+            color: #ddd;
+        }
+
+        .offcanvas-trigger {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .offcanvas-trigger:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Trigger Button -->
+    <button class="offcanvas-trigger">Open Menu</button>
+
+    <!-- Custom Offcanvas -->
+    <div class="offcanvas" id="customOffcanvas">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button class="btn-close">&times;</button>
+        </div>
+        <div class="offcanvas-body">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to toggle the offcanvas
+        const offcanvas = document.getElementById('customOffcanvas');
+        const trigger = document.querySelector('.offcanvas-trigger');
+        const closeButton = document.querySelector('.btn-close');
+
+        trigger.addEventListener('click', () => {
+            offcanvas.classList.add('active');
+        });
+
+        closeButton.addEventListener('click', () => {
+            offcanvas.classList.remove('active');
+        });
+
+        // Optional: Close offcanvas by clicking outside of it
+        document.addEventListener('click', (event) => {
+            if (!offcanvas.contains(event.target) && !trigger.contains(event.target)) {
+                offcanvas.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
