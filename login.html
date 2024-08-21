@@ -1,54 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./img/icon.webp" type="image/x-icon">
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./img/icon.webp" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <!-- <link rel="stylesheet" href="./css/account.css" /> -->
+    <script
+      src="https://kit.fontawesome.com/b3d1380926.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./css/bootstrap.bundle.js"></script>
+    <script src="./css/bootstrap.bundle.min.js"></script>
+    <script src="/css/bootstrap.js"></script>
     <script src="./js/jquery-3.6.0.js"></script>
     <script src="./js/script.js"></script>
     <title>Log in or sign up into your account</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="img">
-        <img src="./img/download.jpg" alt="" class="welcome-image"><h2>Welcome to Moniepoint</h2>
-     </div>
-<div class="body">
-    <div class="form-container">
+      <img src="./img/download.jpg" alt="" class="welcome-image" />
+      <h2>Welcome to Moniepoint</h2>
+    </div>
+    <div class="body">
+      <div class="form-container">
         <div class="form-header">
-            <button id="login-btn" class="toggle-btn active">Login</button>
-            <button id="signup-btn" class="toggle-btn">Sign Up</button>
+          <button id="login-btn" class="toggle-btn active">Login</button>
+          <button id="signup-btn" class="toggle-btn">Sign Up</button>
         </div>
         <div class="form-body">
-            <form id="login-form" class="form-content active">
-                <div class="input-group">
-                    <label for="login-username">Account number</label>
-                    <input type="text" id="login-username" name="username" required>
-                </div>
-                <div class="input-group">
-                    <label for="login-password">Password</label>
-                    <input type="password" id="login-password" name="password" required>
-                </div>
-                <button type="submit">Login</button>
-            </form>
-            <form id="signup-form" class="form-content">
-                <div class="input-group">
-                    <label for="signup-username">Username</label>
-                    <input type="text" id="signup-username" name="username" required>
-                </div>
-                <div class="input-group">
-                    <label for="signup-password">Password</label>
-                    <input type="password" id="signup-password" name="password" required>
-                </div>
-                <div class="input-group">
-                    <label for="emailaddress">Email address</label>
-                    <input type="email" id="exampleFormControlInput1" name="email" required>
-                  </div>
-                <button type="submit">Sign Up</button>
-            </form>
+          <form id="login-form" class="form-content active">
+            <div class="input-group">
+              <label for="login-username">Account number</label>
+              <input type="text" id="login-username" name="username" required />
+            </div>
+            <div class="input-group">
+              <label for="login-password">Password</label>
+              <input
+                type="password"
+                id="login-password"
+                name="password"
+                required
+              />
+            </div>
+            <button type="submit">Login</button>
+          </form>
+          <form id="signup-form" class="form-content">
+            <div class="input-group">
+              <label for="signup-username">Username</label>
+              <input
+                type="text"
+                id="signup-username"
+                name="username" placeholder="surname,firstname,lastname"
+                required 
+              />
+            </div>
+            <div class="input-group">
+              <label for="signup-password">Password</label>
+              <input
+                type="password"
+                id="signup-password"
+                name="password"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <label for="emailaddress">Email address</label>
+              <input
+                type="email"
+                id="exampleFormControlInput1"
+                name="email"
+                required
+              />
+            </div>
+            <button type="submit">Sign Up</button>
+          </form>
         </div>
+      </div>
     </div>
-</div>
-</body>
+    <div class="body2">
+      <nav class="nav">
+        <div class="nav1">
+          <div class="user">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <div class="tier">Tier 1</div>
+        </div>
+        <div class="nav2">
+          <div class="home">
+            <i class="fa-solid fa-house"></i>
+            <p class="hom">Home</p>
+          </div>
+          <div class="bankcard">
+            <i class="fa-solid fa-credit-card"></i>
+            <p class="cad">Card</p>
+          </div>
+          <div class="savings">
+            <i class="fa-solid fa-piggy-bank"></i>
+            <p class="save">Savings</p>
+          </div>
+          <div class="salary">
+            <i class="fa-solid fa-money-bill"></i>
+            <p class="sal">Salary</p>
+          </div>
+          <div class="bell">
+            <i class="fa-solid fa-bell"></i>
+            <p>Noticication</p>
+          </div>
+          <div class="headphone">
+            <i class="fa-solid fa-headphones"></i>
+            <p>Customer Service</p>
+          </div>
+          <div class="logout">
+            <button class="logoutbtn">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <p>Logout</p>
+            </button>
+          </div>
+        </div>
+      </nav>
+      <div class="overview">
+        <div class="name">
+          <span class="account-holder">Fabunmi Ebenezer Oluwarotimi</span>
+        </div>
+        <div class="accountno">
+          <p>Account Number :</p>
+          <span clas="accountnumber"></span>
+        </div>
+      </div>
+      <br />
+      <div class="accountacive">
+        <div class=""><p>Available Balance:</p></div>
+        <div class="accountbalance">
+          <h1>&#8358; <span class="money">0.00</span></h1>
+        </div>
+        <div class="history">
+          <button
+            class="btn"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight"
+          >
+            Transaction History <i class="fa-solid fa-chevron-right"></i>
+          </button>
+
+          <div
+            class="offcanvas offcanvas-end"
+            tabindex="-1"
+            id="offcanvasRight"
+            aria-labelledby="offcanvasRightLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasRightLabel">
+                Your history will be shown here
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <p>
+                Transferred <span class="price">&#8358; 5000 to </span
+                ><span class="account-number">486845</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <button
+          class="add-money"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasTop"
+          aria-controls="offcanvasTop"
+        >
+          <h2>+ Add money</h2>
+        </button>
+
+        <div
+          class="offcanvas offcanvas-top"
+          tabindex="-1"
+          id="offcanvasTop"
+          aria-labelledby="offcanvasTopLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasTopLabel">
+              Fund Your Account
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <form action="">
+              <div class="">
+                <label for="" class="form-label">Amount</label>
+                <input type="number" class="form-control" id="" />
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="transfer">
+        <div class="transferbtn">
+          <button class="openModalBtn">
+            <i class="fa-solid fa-money-bill-transfer"></i>
+            <p>Transfer</p>
+          </button>
+          <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2 class="transfer-text">Transfer Money</h2>
+              <form id="transferForm">
+                <div class="mb-3">
+                  <label for="" class="form-label"
+                    >Recipient Account Number</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id=""
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Amount</label>
+                  <input type="number" class="form-control" id="" />
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="topup">
+          <button>
+            <i class="fa-solid fa-mobile-screen"></i>
+            <p>Top up</p>
+          </button>
+        </div>
+        <div class="paybills">
+          <button>
+            <i class="fa-solid fa-cart-shopping"></i>
+            <p>Pay Bills</p>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

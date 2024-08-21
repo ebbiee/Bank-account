@@ -130,3 +130,222 @@ button:hover {
 .form{
     width: 400px;
 }
+
+.body2{
+    background-image: linear-gradient(to bottom right, #0357ee, #e1ebff);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 0px;
+    padding: 20px;
+    color: white;
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
+.nav1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.user{
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+.user i{
+    font-size: 24px;    
+    color: #212529;
+}
+
+.tier{
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 65px;
+    border-radius: 32.5px;
+    background-color: #2e2928;
+    color: #b18d30;
+    font-family: sans-serif;
+    font-weight: 200;
+}
+.nav2{
+    margin-left: 800px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* .home, .savings, .salary, .bamkcard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+} */
+.nav2  div {
+    display: flex;
+    flex-direction: column; /* Align icon and text vertically */
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px; /* Space between items */
+    text-align: center;
+}
+
+.nav2 i {
+    /* font-size: 24px; */
+    margin-bottom: 5px; /* Space between icon and text */
+}
+
+.nav2 p {
+    margin: 0;
+    font-size: 14px; /* Adjust text size */
+}
+.home{
+    color: #f3c665;
+}
+.overview{
+    display: flex;
+    margin-top: 20px;
+    height: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px #0f1e36;
+
+}
+.name{
+    display:flex ;
+    padding: 10px;
+}
+.accountno{
+    width: fit-content;
+    display:flex ;
+    padding: 10px;
+    margin-left: 750px;
+}
+.accountacive{
+    padding: 20px;
+    height: 200px;
+    box-shadow: 0 4px 8px #0f1e36;
+    border-radius: 10px;
+}
+.history{
+    color: white;
+    margin-left: 80%;
+    position: absolute;
+    top: 830px;
+}
+.history button{
+    border:  solid;
+    color: white;
+    border-color: white;
+    border-radius: 30px;
+}
+.add-money{
+    border: none;
+    width: 100%;
+    border-radius: 25px;
+    background-color: #212529;
+    font-weight: bold;
+    color: white;
+}
+.add-money h2{
+    font-weight: bold;
+    color: white;  
+}
+.add-money:hover{
+    border: 20px ;
+    border-color: #ffd75b;
+    background-color: #0f1e36;
+    color: white;
+    transform: 0.3s ease;
+}
+.transfer{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    box-shadow: 0 4px 8px #0f1e36;
+}
+.transfer button{
+    align-items: center;
+    justify-content: center;
+    border: none;
+    margin-left: 20px;
+    width: 100px;
+    border-radius: 10px;
+    background-color: #a4bae2dc;
+    color: white;
+    box-shadow: 0 4px 8px #0f1e36;
+}
+.transfer button:hover{
+    color: black;
+    background-color: #ffd75b;
+    transition: 0.3s ease;
+}
+.logoutbtn{
+    border: none;
+    background-color: transparent;
+    color: white;
+}
+.logoutbtn:hover{
+    color: #b18d30;
+}
+.nav2  div:hover{
+    color: #b18d30;
+}
+.tansfermoney {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 450px;
+    height: 200px;
+    text-align: center;
+}
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 400px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-content{
+    color: black;
+}
