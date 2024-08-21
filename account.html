@@ -76,7 +76,7 @@
 
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">Your history will be shown here</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
@@ -84,7 +84,17 @@
           </div>
         </div>
       </div>
-      <button type="button" class="add-money"><h2>+ Add money</h2></button>
+      <button class="btn add-money" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><h2>+ Add money</h2></button>
+
+<div class="offcanvas offcanvas-top " tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasTopLabel">Offcanvas top</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    ...
+  </div>
+</div>
     </div>
     <br />
     <div class="transfer">
@@ -96,15 +106,17 @@
         <div id="myModal" class="modal">
           <div class="modal-content">
               <span class="close">&times;</span>
-              <h2>Transfer Money</h2>
+              <h2 class="transfer-text">Transfer Money</h2>
               <form id="transferForm">
-                  <label for="accountNumber">Recipient Account Number:</label>
-                  <input type="text" id="accountNumber" name="accountNumber" required>
-  
-                  <label for="amount">Amount:</label>
-                  <input type="number" id="amount" name="amount" required>
-  
-                  <button type="submit">Transfer</button>
+                <div class="mb-3">
+                  <label for="" class="form-label">Recipient Account Number</label>
+                  <input type="text" class="form-control" id="" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Amount</label>
+                  <input type="number" class="form-control" id="">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
               </form>
           </div>
       </div>

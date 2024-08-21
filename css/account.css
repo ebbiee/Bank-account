@@ -210,3 +210,6 @@ body{
     text-decoration: none;
     cursor: pointer;
 }
+.modal-content{
+    color: black;
+}

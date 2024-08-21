@@ -1,21 +1,15 @@
 $(document).ready(function() {
     // Get modal element
-    var $modal = $("#myModal");
-
-    // Listen for open click
+    const modal = $("#myModal");
     $(".openModalBtn").on("click", function() {
-        $modal.show();
+        modal.fadeIn();
     });
-
-    // Listen for close click
     $(".close").on("click", function() {
-        $modal.hide();
+        modal.fadeOut();
     });
-
-    // Close modal if outside click
     $(window).on("click", function(event) {
         if ($(event.target).is($modal)) {
-            $modal.hide();
+            modal.hide();
         }
     });
 });
