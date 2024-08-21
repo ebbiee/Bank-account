@@ -1,68 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/account.css">
-    <script src="https://kit.fontawesome.com/b3d1380926.js" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/account.css" />
+    <script
+      src="https://kit.fontawesome.com/b3d1380926.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="./css/bootstrap.bundle.js"></script>
     <script src="./css/bootstrap.bundle.min.js"></script>
+    <script src="/css/bootstrap.js"></script>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script src="./js/account.js"></script>
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <nav class="nav">
-        <div class="nav1">
-            <div class="user">
-                <i class="fa-solid fa-user"></i>
-            </div>
-            <div class="tier">
-                Tier 1
-            </div>
-          </div>
-          <div class="nav2">
-            <div class="home">
-                <i class="fa-solid fa-house"></i> <p class="hom">Home</p>
-            </div>
-            <div class="bankcard">
-                <i class="fa-solid fa-credit-card"></i> <p class="cad">Card</p>
-            </div>
-            <div class="savings">
-                <i class="fa-solid fa-piggy-bank"></i><p class="save">Savings</p>
-            </div>
-            <div class="salary">
-                <i class="fa-solid fa-money-bill"></i><p class="sal">Salary</p>
-            </div>
-            <div class="bell">
-                <i class="fa-solid fa-bell"></i>
-            </div>
-            <div class="headphone">
-                <i class="fa-solid fa-headphones"></i>
-            </div>
-              </button>
-          </div>
-      </nav>
-      <div class="overview">
-        <div class="name"><span class="account-holder">Fabunmi Ebenezer Oluwarotimi</span></div>
-        <div class="accountno"><p>Account Number :  </p><span clas="accountnumber">  2003685</span></div>
-      </div> <br>
-      <div class="accountacive">
-        <div class=""><p>Available Balance:</p></div>
-        <div class="accountbalance"><h1>&#8358; <span class="money">150000</span></h1></div>
-        <div class="history"><button type="button" class="btn">Transaction History <i class="fa-solid fa-chevron-right"></i></button></div>
-        <button type="button" class="add-money"><h2>+ Add money</h2></button>
-      </div> <br>
-      <div class="transfer">
-        <div class="transferbtn">
-            <button><i class="fa-solid fa-money-bill-transfer"></i> <p>Transfer</p></button>
+      <div class="nav1">
+        <div class="user">
+          <i class="fa-solid fa-user"></i>
         </div>
-        <div class="topup">
-            <button><i class="fa-solid fa-mobile-screen"></i> <p>Top up</p></button>
+        <div class="tier">Tier 1</div>
+      </div>
+      <div class="nav2">
+        <div class="home">
+          <i class="fa-solid fa-house"></i>
+          <p class="hom">Home</p>
         </div>
-        <div class="paybills">
-            <button><i class="fa-solid fa-cart-shopping"></i><p>Pay Bills</p></button>
+        <div class="bankcard">
+          <i class="fa-solid fa-credit-card"></i>
+          <p class="cad">Card</p>
+        </div>
+        <div class="savings">
+          <i class="fa-solid fa-piggy-bank"></i>
+          <p class="save">Savings</p>
+        </div>
+        <div class="salary">
+          <i class="fa-solid fa-money-bill"></i>
+          <p class="sal">Salary</p>
+        </div>
+        <div class="bell">
+          <i class="fa-solid fa-bell"></i><p>Noticication</p>
+        </div>
+        <div class="headphone">
+          <i class="fa-solid fa-headphones"></i><p>Customer Service</p>
+        </div>
+        <div class="logout">
+          <button class="logoutbtn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <p>Logout</p>
+          </button>
         </div>
       </div>
-</body>
-</html>
+    </nav>
+    <div class="overview">
+      <div class="name">
+        <span class="account-holder">Fabunmi Ebenezer Oluwarotimi</span>
+      </div>
+      <div class="accountno">
+        <p>Account Number :</p>
+        <span clas="accountnumber"> 2003685</span>
+      </div>
+    </div>
+    <br />
+    <div class="accountacive">
+      <div class=""><p>Available Balance:</p></div>
+      <div class="accountbalance">
+        <h1>&#8358; <span class="money">0.00</span></h1>
+      </div>
+      <div class="history">
+        <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"> Transaction History <i class="fa-solid fa-chevron-right"></i></button>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            ...
+          </div>
+        </div>
+      </div>
+      <button type="button" class="add-money"><h2>+ Add money</h2></button>
+    </div>
+    <br />
+    <div class="transfer">
+      <div class="transferbtn">
+        <button class="openModalBtn">
+          <i class="fa-solid fa-money-bill-transfer"></i>
+          <p>Transfer</p>
+        </button>
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>Transfer Money</h2>
+              <form id="transferForm">
+                  <label for="accountNumber">Recipient Account Number:</label>
+                  <input type="text" id="accountNumber" name="accountNumber" required>
+  
+                  <label for="amount">Amount:</label>
+                  <input type="number" id="amount" name="amount" required>
+  
+                  <button type="submit">Transfer</button>
+              </form>
+          </div>
+      </div>
+      </div>
+      <div class="topup">
+        <button>
+          <i class="fa-solid fa-mobile-screen"></i>
+          <p>Top up</p>
+        </button>
+      </div>
+      <div class="paybills">
+        <button>
+          <i class="fa-solid fa-cart-shopping"></i>
+          <p>Pay Bills</p>
+        </button>
+      </div>
+    </div>
+  </body>
+  </html> 

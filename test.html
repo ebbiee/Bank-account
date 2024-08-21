@@ -3,124 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Offcanvas</title>
+    <title>Money Transfer Modal</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
+        /* Modal styles */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.5); 
+}
 
-        .offcanvas {
-            position: fixed;
-            top: 0;
-            right: -400px; /* Hide offcanvas initially */
-            width: 300px;
-            height: 100%;
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            transition: right 0.3s ease; /* Smooth sliding effect */
-            z-index: 1000;
-        }
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 400px;
+}
 
-        .offcanvas.active {
-            right: 0; /* Slide in the offcanvas */
-        }
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
 
-        .offcanvas-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
 
-        .offcanvas-title {
-            font-size: 24px;
-            margin: 0;
-        }
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
 
-        .btn-close {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-        }
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
-        .offcanvas-body {
-            overflow-y: auto; /* Allow scrolling if content is too long */
-        }
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
-        .offcanvas a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            margin: 15px 0;
-            font-size: 18px;
-            transition: color 0.2s ease;
-        }
+button:hover {
+    background-color: #45a049;
+}
 
-        .offcanvas a:hover {
-            color: #ddd;
-        }
-
-        .offcanvas-trigger {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-
-        .offcanvas-trigger:hover {
-            background-color: #0056b3;
-        }
     </style>
 </head>
 <body>
+    <!-- Button to Open the Modal -->
+    <button id="openModalBtn">Transfer Money</button>
 
-    <!-- Trigger Button -->
-    <button class="offcanvas-trigger">Open Menu</button>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Transfer Money</h2>
+            <form id="transferForm">
+                <label for="accountNumber">Recipient Account Number:</label>
+                <input type="text" id="accountNumber" name="accountNumber" required>
 
-    <!-- Custom Offcanvas -->
-    <div class="offcanvas" id="customOffcanvas">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title">Menu</h5>
-            <button class="btn-close">&times;</button>
-        </div>
-        <div class="offcanvas-body">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" name="amount" required>
+
+                <button type="submit">Transfer</button>
+            </form>
         </div>
     </div>
 
     <script>
-        // JavaScript to toggle the offcanvas
-        const offcanvas = document.getElementById('customOffcanvas');
-        const trigger = document.querySelector('.offcanvas-trigger');
-        const closeButton = document.querySelector('.btn-close');
+        // Get modal element
+var modal = document.getElementById("myModal");
 
-        trigger.addEventListener('click', () => {
-            offcanvas.classList.add('active');
-        });
+// Get open modal button
+var openModalBtn = document.getElementById("openModalBtn");
 
-        closeButton.addEventListener('click', () => {
-            offcanvas.classList.remove('active');
-        });
+// Get close button
+var closeBtn = document.getElementsByClassName("close")[0];
 
-        // Optional: Close offcanvas by clicking outside of it
-        document.addEventListener('click', (event) => {
-            if (!offcanvas.contains(event.target) && !trigger.contains(event.target)) {
-                offcanvas.classList.remove('active');
-            }
-        });
+// Listen for open click
+openModalBtn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// Listen for close click
+closeBtn.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Close modal if outside click
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
     </script>
 </body>
 </html>
