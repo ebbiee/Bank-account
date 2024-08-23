@@ -237,8 +237,14 @@ button:hover {
     color: white;
     margin-left: 80%;
     position: absolute;
-    top: 830px;
+    top: 230px;
 }
+/* .history2{
+    color: white;
+    margin-left: 80%;
+    position: absolute;
+    top: 240px;
+} */
 .history button{
     border:  solid;
     color: white;

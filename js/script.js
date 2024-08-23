@@ -101,7 +101,8 @@ $("form").submit(function (event) {
     if (account && account.password === password) {
       loggedInAccount = account;
       $(".body2").fadeIn()
-      alert("Login successful!");
+      $(".body").hide()
+      $(".img").hide()
       showAccountDetails(loggedInAccount);
       updateTransactionHistory(loggedInAccount);
     } else {
@@ -165,6 +166,11 @@ function updateTransactionHistory(account) {
     console.log(`  Amount: ${transaction.amount}`);
   });
 }
+$(".logoutbtn").click(function(){
+  $(".body2").hide()
+  $(".body").fadeIn()
+  $(".img").show()
+})
 const loginBtn = $('#login-btn');
 const signupBtn =$('#signup-btn');
 const loginForm = $('#login-form');
