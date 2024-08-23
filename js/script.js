@@ -83,9 +83,9 @@ $("form").submit(function (event) {
 
     // Display the username and account number on the screen
     $(".account-holder").html(username);
-    $(".accountnumber").html(newAccount.id); // Display the account number
+    $(".accountnumber").html(newAccount.id);
 
-    alert("Account created successfully! Your Account Number is " + newAccount.id + "you can noww use the acccount number to login to access your account"
+    alert("Account created successfully! Your Account Number is " + newAccount.id + " you can noww use the acccount number to login to access your account"
     );
     $(this)[0].reset();
   } 
@@ -145,12 +145,11 @@ function showAccountDetails(account) {
   $(".account-holder").html(account.username);
   $(".accountnumber").html(account.id);
   $(".money").html(account.balance.toFixed(2));
-  // Additional account details can be displayed here
 }
 
 function updateTransactionHistory(account) {
   const historyContainer = $("#off");
-  historyContainer.html(""); // Clear the existing history
+  historyContainer.html("");
 
   account.transactionHistory.forEach(transaction => {
     let transactionType;
