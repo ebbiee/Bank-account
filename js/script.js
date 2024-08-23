@@ -35,17 +35,8 @@ function Bank() {
     this.amount = amount;
     this.accountNumber = accountNumber; 
   }
-  accountHolder.prototype.username = function(){
-    return this.username;
-  }
-  accountHolder.prototype.getPassword = function() {
-    return this.password;
-  };
-  accountHolder.prototype.getBalance = function() {
-    return this.balance;
-  };
-  accountHolder.prototype.addTransaction = function(amount, accountNumber) {
-    this.transactionHistory.push(new TransactionHistory(amount, accountNumber));
+  accountHolder.prototype.addTransaction = function(amount, accountNumber = null) {
+    this.transactionHistory.push(new transactionHistory(amount, accountNumber));
   };
   accountHolder.prototype.depositMoney = function (amount) {
     let initial = parseInt(this.balance);
@@ -53,7 +44,14 @@ function Bank() {
     this.balance = deposit + initial;
     return this.balance;
 }
-
+ accountHolder.prototype.makeTransfers = function (amount) {
+  if (amount > this.balance) {
+    alert("INSUFFICIENT FUNDS!!!!!")
+  } else {
+    this.balance -= parseInt(amount);
+  }
+  return this.balance
+}
 
 
 
@@ -63,6 +61,7 @@ function Bank() {
 
 //user iterface
 $(document).ready(function(){
+
 let bank = new Bank();
 let loggedInAccount = null;
 
@@ -71,6 +70,9 @@ $("form").submit(function (event) {
   const formId = $(this).attr("id");
 
   if (formId === "signup-form") {
+    $(".signup").click(function(){
+      $(".body2").hide()
+    })
     const username = $("#signup-username").val();
     const password = $("#signup-password").val();
     const email = $("#exampleFormControlInput1").val();
@@ -83,7 +85,8 @@ $("form").submit(function (event) {
     $(".account-holder").html(username);
     $(".accountnumber").html(newAccount.id); // Display the account number
 
-    console.log("Account created successfully! Your Account Number is " + newAccount.id);
+    alert("Account created successfully! Your Account Number is " + newAccount.id + "you can noww use the acccount number to login to access your account"
+    );
     $(this)[0].reset();
   } 
   else if (formId === "login-form") {
@@ -97,8 +100,10 @@ $("form").submit(function (event) {
 
     if (account && account.password === password) {
       loggedInAccount = account;
+      $(".body2").fadeIn()
       alert("Login successful!");
       showAccountDetails(loggedInAccount);
+      updateTransactionHistory(loggedInAccount);
     } else {
       alert("Login failed. Please check your account number and password.");
     }
@@ -108,12 +113,31 @@ $("form").submit(function (event) {
     console.log('Logged in account during add money:', loggedInAccount);
     if (loggedInAccount && typeof loggedInAccount.depositMoney === "function") {
       let result = loggedInAccount.depositMoney(amount);
-      $(".money").html(result); // Update the displayed balance
+      loggedInAccount.addTransaction(amount, null);
+      $(".money").html(result); //
+      updateTransactionHistory(loggedInAccount);
       console.log('Deposited amount:', amount, 'New balance:', result);
     } else {
       console.log("No account is logged in or depositMoney method is missing");
     }
     $(this)[0].reset();
+
+  }
+  if (formId === "transferForm") { 
+    const amount = parseInt($("#transferAmount").val()); 
+    if (loggedInAccount && typeof loggedInAccount.makeTransfers === "function") {
+      let success = loggedInAccount.makeTransfers(amount);
+      if (success) {
+        loggedInAccount.addTransaction(-amount, "Transfer");
+        $(".money").html(loggedInAccount.balance.toFixed(2));
+        updateTransactionHistory(loggedInAccount);
+        console.log("Transfer successful. New balance: " + loggedInAccount.balance);
+      } else {
+        console.log("Transfer failed.");
+      }
+    } else {
+      console.log("No account is logged in or makeTransfers method is missing");
+    }
   }
 });
 
@@ -124,7 +148,24 @@ function showAccountDetails(account) {
   // Additional account details can be displayed here
 }
 
+function updateTransactionHistory(account) {
+  const historyContainer = $("#off");
+  historyContainer.html(""); // Clear the existing history
 
+  account.transactionHistory.forEach(transaction => {
+    let transactionType;
+    if (transaction.accountNumber === null) {
+      transactionType = "Credit";
+    } else {
+      transactionType = "Debit";
+    }
+    const transactionElement = `
+      <p>${transactionType}: <span class="price">&#8358;${transaction.amount}</span></p>
+    `;
+    historyContainer.append(transactionElement);
+    console.log(`  Amount: ${transaction.amount}`);
+  });
+}
 const loginBtn = $('#login-btn');
 const signupBtn =$('#signup-btn');
 const loginForm = $('#login-form');

@@ -28,13 +28,13 @@
       <div class="form-container">
         <div class="form-header">
           <button id="login-btn" class="toggle-btn active">Login</button>
-          <button id="signup-btn" class="toggle-btn">Sign Up</button>
+          <button id="signup-btn" class="toggle-btn signup">Sign Up</button>
         </div>
         <div class="form-body">
           <form id="login-form" class="form-content active">
             <div class="input-group">
               <label for="login-username">Account number</label>
-              <input type="text" id="account-number" name="username" required/>
+              <input type="text" id="account-number" name="username" required />
             </div>
             <div class="input-group">
               <label for="login-password">Password</label>
@@ -53,8 +53,9 @@
               <input
                 type="text"
                 id="signup-username"
-                name="username" placeholder="surname,firstname,lastname"
-                required 
+                name="username"
+                placeholder="surname,firstname,lastname"
+                required
               />
             </div>
             <div class="input-group">
@@ -164,11 +165,12 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div class="offcanvas-body">
-              <p>
-                Transferred <span class="price">&#8358; 5000 to </span
-                ><span class="account-number">486845</span>
-              </p>
+            <div class="offcanvas-body "  id="off">
+              <!-- <p>
+                 <span class="price">&#8358; </span
+                > to <span class="account-number"></span>
+              </p> -->
+              <ul></ul>
             </div>
           </div>
         </div>
@@ -201,9 +203,9 @@
           </div>
           <div class="offcanvas-body">
             <form action="" id="addMoneyForm">
-              <div class="">
+              <div class="form-group">
                 <label for="" class="form-label">Amount</label>
-                <input type="number" class="form-control  amountToAdd"/>
+                <input type="number" class="form-control amountToAdd" />
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
@@ -228,13 +230,17 @@
                   >
                   <input
                     type="text"
-                    class="form-control"
+                    class="form-control recipientno"
                     aria-describedby="emailHelp"
                   />
                 </div>
                 <div class="mb-3">
                   <label for="" class="form-label">Amount</label>
-                  <input type="number" class="form-control"/>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="transferAmount"
+                  />
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>

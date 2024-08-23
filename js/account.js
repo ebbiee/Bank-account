@@ -1,210 +1,166 @@
-// // Business logic
-// function Bank() {
-//   this.accounts = {};
-//   this.currentId = 2209146835;
-// }
+function Bank() {
+  this.accounts = {};
+  this.currentId = 220914683;
+}
 
-// Bank.prototype.assignID = function() {
-//   this.currentId += 1268;
-//   return this.currentId;
-// };
+Bank.prototype.assignID = function () {
+  this.currentId += 1268;
+  return this.currentId;
+};
 
-// Bank.prototype.addAccount = function(account) {
-//   account.id = this.assignID();
-//   this.accounts[account.id] = account;
-// };
+Bank.prototype.addAccount = function (account) {
+  account.id = this.assignID();
+  this.accounts[account.id] = account;
+};
 
-// Bank.prototype.deleteAccount = function(id) {
-//   if (this.accounts[id] === undefined) {
-//     return false;
-//   }
-//   delete this.accounts[id];
-//   return true;
-// };
+Bank.prototype.deleteAccount = function (id) {
+  if (this.accounts[id] === undefined) {
+    return false;
+  }
+  delete this.accounts[id];
+  return true;
+};
 
-// Bank.prototype.findAccount = function(id) {
-//   if (this.accounts[id] != undefined) {
-//     return this.accounts[id];
-//   }
-//   return false;
-// };
+Bank.prototype.findAccount = function (id) {
+  return this.accounts[id] || false;
+};
 
-// function AccountHolder(username, password, emailAddress) {
-//   this.username = username;
-//   this.password = password;
-//   this.emailAddress = emailAddress;
-//   this.balance = 0;
-//   this.transactionHistory = [];
-// }
+function accountHolder(username, password, emailAddress) {
+  this.username = username;
+  this.password = password;
+  this.emailAddress = emailAddress;
+  this.balance = 0;
+  this.transactionHistory = [];
+}
 
-// AccountHolder.prototype.getUsername = function() {
-//   return this.username;
-// };
+function TransactionHistory(type, amount, accountNumber) {
+  this.type = type;
+  this.amount = amount;
+  this.accountNumber = accountNumber;
+}
 
-// AccountHolder.prototype.getPassword = function() {
-//   return this.password;
-// };
+accountHolder.prototype.addTransaction = function (type, amount, accountNumber = null) {
+  const transaction = new TransactionHistory(type, amount, accountNumber);
+  this.transactionHistory.push(transaction);
+};
 
-// AccountHolder.prototype.getEmailAddress = function() {
-//   return this.emailAddress;
-// };
+accountHolder.prototype.depositMoney = function (amount) {
+  let deposit = parseInt(amount);
+  this.balance += deposit;
+  this.addTransaction("Credit", amount);
+  return this.balance;
+};
 
-// AccountHolder.prototype.getBalance = function() {
-//   return this.balance;
-// };
+accountHolder.prototype.makeTransfers = function (amount) {
+  if (amount > this.balance) {
+    alert("INSUFFICIENT FUNDS!!!!!");
+    return false;
+  } else {
+    this.balance -= parseInt(amount);
+    this.addTransaction("Debit", amount);
+    return true;
+  }
+};
 
-// AccountHolder.prototype.addTransaction = function(amount, accountNumber) {
-//   this.transactionHistory.push(new TransactionHistory(amount, accountNumber));
-// };
 
-// function TransactionHistory(amount, accountNumber) {
-//   this.amount = amount;
-//   this.accountNumber = accountNumber;
-// }
+$(document).ready(function(){
 
-// // User interface
-// $(document).ready(function() {
-//   const bank = new Bank();
+  let bank = new Bank();
+  let loggedInAccount = null;
 
-//   $("form").submit(function(event) {
-//     event.preventDefault();
-//     loginAndSignUp($(this));
-//   });
+  $("form").submit(function (event) {
+      event.preventDefault();
+      const formId = $(this).attr("id");
 
-//   function loginAndSignUp(form) {
-//     const formId = form.attr("id");
-//     if (formId === "signup-form") {
-//       const username = $("#signup-username").val();
-//       const password = $("#signup-password").val();
-//       const email = $("#exampleFormControlInput1").val();
+      if (formId === "signup-form") {
+          $(".signup").click(function(){
+              $(".body2").hide(); // This hides body2 during signup
+          })
+          const username = $("#signup-username").val();
+          const password = $("#signup-password").val();
+          const email = $("#exampleFormControlInput1").val();
 
-//       const newAccount = new AccountHolder(username, password, email);
-//       bank.addAccount(newAccount);
-//       alert("Account created successfully!");
-//       form[0].reset();
-//     } else if (formId === "login-form") {
-//       const accountNumber = $("#account-number").val();
-//       const password = $("#login-password").val();
+          const newAccount = new accountHolder(username, password, email);
+          bank.addAccount(newAccount);
 
-//       const account = bank.findAccount(accountNumber);
-//       if (account && account.getPassword() === password) {
-//         alert("Login successful!");
-//         // Display account dashboard
-//         displayAccountDashboard(account);
-//       } else {
-//         alert("Invalid account number or password");
-//       }
-//     }
-//   }
+          $(".account-holder").html(username);
+          $(".accountnumber").html(newAccount.id);
 
-//   function displayAccountDashboard(account) {
-//     $(".body2").show();
-//     $(".account-holder").text(account.getUsername());
-//     $(".accountnumber").text(account.id);
-//     $(".money").text(account.getBalance());
+          alert("Account created successfully! Your Account Number is " + newAccount.id + " you can now use this account number to log in.");
 
-//     // Display transaction history
-//     const transactionHistory = account.transactionHistory;
-//     $(".offcanvas-body").html("");
-//     transactionHistory.forEach((transaction) => {
-//       const html = `
-//         <p>
-//           Transferred <span class="price">&#8358; ${transaction.amount} to </span
-//           ><span class="account-number">${transaction.accountNumber}</span>
-//         </p>
-//       `;
-//       $(".offcanvas-body").append(html);
-//     });
-//   }
+          $(this)[0].reset();
+      } 
+      else if (formId === "login-form") {
+          const accountNumber = $("#account-number").val();
+          const password = $("#login-password").val();
 
-//   const loginBtn = $("#login-btn");
-//   const signupBtn = $("#signup-btn");
-//   const loginForm = $("#login-form");
-//   const signupForm = $("#signup-form");
+          const account = bank.findAccount(accountNumber);
 
-//   loginBtn.click(function() {
-//     loginForm.addClass("active");
-//     signupForm.removeClass("active");
-//     loginBtn.addClass("active");
-//     signupBtn.removeClass("active");
-//   });
+          if (account && account.password === password) {
+              loggedInAccount = account;
+              $(".body2").fadeIn(); // Make sure body2 is visible after login
+              alert("Login successful!");
+              showAccountDetails(loggedInAccount);
+              updateTransactionHistory(loggedInAccount);
+          } else {
+              alert("Login failed. Please check your account number and password.");
+          }
+      }
+      // ... Other form handling code
+  });
 
-//   signupBtn.click(function() {
-//     signupForm.addClass("active");
-//     loginForm.removeClass("active");
-//     signupBtn.addClass("active");
-//     loginBtn.removeClass("active");
-//   });
+  // Functions to show account details and transaction history
+  function showAccountDetails(account) {
+      $(".account-holder").html(account.username);
+      $(".accountnumber").html(account.id);
+      $(".money").html(account.balance.toFixed(2));
+  }
 
-//   const modal = $("#myModal");
-//   $(".openModalBtn").on("click", function() {
-//     modal.fadeIn();
-//   });
+  function updateTransactionHistory(account) {
+      const historyContainer = $(".offcanvas-body");
+      historyContainer.html(""); // Clear the existing history
 
-//   $(".close").on("click", function() {
-//     modal.fadeOut();
-//   });
+      account.transactionHistory.forEach(transaction => {
+          const type = transaction.type === "Credit" ? "Credited" : "Debited";
+          const transactionElement = `
+              <p>${type}: <span class="price">&#8358;${transaction.amount}</span></p>
+          `;
+          historyContainer.append(transactionElement);
+      });
+  }
 
-//   $(window).on("click", function(event) {
-//     if ($(event.target).is(modal)) {
-//       modal.hide();
-//     }
-//   });
+  // Login and Signup button toggle
+  const loginBtn = $('#login-btn');
+  const signupBtn = $('#signup-btn');
+  const loginForm = $('#login-form');
+  const signupForm = $('#signup-form');
 
-//   // Transfer money functionality
-//   $("#transferForm").submit(function(event) {
-//     event.preventDefault();
-//     const recipientAccountNumber = $("#recipient-account-number").val();
-//     const amount = $("#transfer-amount").val();
+  loginBtn.click(function() {
+      loginForm.addClass('active');
+      signupForm.removeClass('active');
+      loginBtn.addClass('active');
+      signupBtn.removeClass('active');
+  });
 
-//     const account = bank.findAccount(recipientAccountNumber);
-//     if (account) {
-//       const currentAccount = bank.findAccount($(".account-holder").text());
-//       if (currentAccount.getBalance() >= amount) {
-//         currentAccount.addTransaction(-amount, recipientAccountNumber);
-//         account.addTransaction(amount, currentAccount.id);
-//         alert("Transfer successful!");
-//         displayAccountDashboard(currentAccount);
-//       } else {
-//         alert("Insufficient balance");
-//       }
-//     } else {
-//       alert("Recipient account not found");
-//     }
-//   });
+  signupBtn.click( function(){
+      signupForm.addClass('active');
+      loginForm.removeClass('active');
+      signupBtn.addClass('active');
+      loginBtn.removeClass('active');
+  });
 
-// // Add money functionality
-// $("#add-money-form").submit(function(event) {
-//   event.preventDefault();
-//   const amount = $("#add-money-amount").val();
+  // Modal handling
+  const modal = $("#myModal");
+  $(".openModalBtn").on("click", function() {
+      modal.fadeIn();
+  });
+  $(".close").on("click", function() {
+      modal.fadeOut();
+  });
+  $(window).on("click", function(event) {
+      if ($(event.target).is(modal)) {
+          modal.hide();
+      }
+  });
+});
 
-//   const currentAccount = bank.findAccount($(".account-holder").text());
-//   if (currentAccount) {
-//     currentAccount.addTransaction(amount, "Deposit");
-//     alert("Money added successfully!");
-//     displayAccountDashboard(currentAccount);
-//   } else {
-//     alert("Error adding money");
-//   }
-// });
-
-// // Display account dashboard
-// function displayAccountDashboard(account) {
-//   $(".body2").show();
-//   $(".account-holder").text(account.getUsername());
-//   $(".accountnumber").text(account.id);
-//   $(".money").text(account.getBalance());
-
-//   // Display transaction history
-//   const transactionHistory = account.transactionHistory;
-//   $(".offcanvas-body").html("");
-//   transactionHistory.forEach((transaction) => {
-//     const html = `
-//       <p>
-//         ${transaction.amount > 0 ? "Deposited" : "Transferred"} <span class="price">&#8358; ${Math.abs(transaction.amount)} ${transaction.accountNumber ? "to " + transaction.accountNumber : ""}</span>
-//       </p>
-//     `;
-//     $(".offcanvas-body").append(html);
-//   });
-// }
-// });

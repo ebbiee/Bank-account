@@ -349,3 +349,6 @@ button:hover {
 .modal-content{
     color: black;
 }
+.body2{
+    display: none;
+}
