@@ -16,6 +16,7 @@
     <script src="/css/bootstrap.js"></script>
     <script src="./js/jquery-3.6.0.js"></script>
     <script src="./js/script.js"></script>
+    <!-- <script src="./js/account.js"></script> -->
     <title>Log in or sign up into your account</title>
   </head>
   <body>
@@ -33,7 +34,7 @@
           <form id="login-form" class="form-content active">
             <div class="input-group">
               <label for="login-username">Account number</label>
-              <input type="text" id="login-username" name="username" required />
+              <input type="text" id="account-number" name="username" required/>
             </div>
             <div class="input-group">
               <label for="login-password">Password</label>
@@ -122,11 +123,11 @@
       </nav>
       <div class="overview">
         <div class="name">
-          <span class="account-holder">Fabunmi Ebenezer Oluwarotimi</span>
+          <span class="account-holder"></span>
         </div>
         <div class="accountno">
           <p>Account Number :</p>
-          <span clas="accountnumber"></span>
+          <span class="accountnumber"></span>
         </div>
       </div>
       <br />
@@ -199,10 +200,10 @@
             ></button>
           </div>
           <div class="offcanvas-body">
-            <form action="">
+            <form action="" id="addMoneyForm">
               <div class="">
                 <label for="" class="form-label">Amount</label>
-                <input type="number" class="form-control" id="" />
+                <input type="number" class="form-control  amountToAdd"/>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
@@ -228,13 +229,12 @@
                   <input
                     type="text"
                     class="form-control"
-                    id=""
                     aria-describedby="emailHelp"
                   />
                 </div>
                 <div class="mb-3">
                   <label for="" class="form-label">Amount</label>
-                  <input type="number" class="form-control" id="" />
+                  <input type="number" class="form-control"/>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
